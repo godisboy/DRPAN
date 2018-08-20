@@ -15,6 +15,7 @@ parser.add_option('--config', type=str, help='net configuration')
 parser.add_option('--cuda', action='store_true', help='enables_cuda')
 parser.add_option('--gpu_ids', default=0, type=int, help='enables cuda')
 parser.add_option('--manualSeed', type=int, help='manual seed')
+parser.add_option('--modeldir', type=str, help='path to models')
 
 
 def main(argv):
@@ -36,58 +37,18 @@ def main(argv):
     transform = transforms.Compose([transforms.Resize((config['fineSize'], config['fineSize'])),
                                     transforms.ToTensor(),
                                     transforms.Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))])
-    dataset = Aligned_Dataset(config['dataPath'], direction='AtoB', transform=transform)
-    train_loader = torch.utils.data.DataLoader(dataset, batch_size=1,
+    dataset = Aligned_Dataset(config['dataPath'], subfolder='test', direction='AtoB', transform=transform)
+    test_loader = torch.utils.data.DataLoader(dataset, batch_size=1,
                                              shuffle=True, num_workers=int(4))
     # setup model
-    trainer = trainer_gan(config, train_loader)
+    trainer = trainer_gan(config, test_loader)
+    # load a model
+    trainer.netG.load_state_dict(torch.load(opt.modeldir))
     if opt.cuda:
         trainer.cuda()
-    # training
-    for epoch in range(config['nepoch']):
-        trainer.train(epoch)
-        if epoch % 20 == 0:
-            trainer.save(epoch)
+    # testing
+    trainer.test()
 
 
 if __name__ == '__main__':
     main(sys.argv)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

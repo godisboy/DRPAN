@@ -1,4 +1,5 @@
 import numpy as np
+import os
 from collections import OrderedDict
 
 import torch
@@ -21,7 +22,7 @@ def to_varabile(arr, requires_grad=False, is_cuda=True):
 
 
 class trainer_gan(nn.Module):
-    def __init__(self, config, train_loader):
+    def __init__(self, config, data_loader):
         super(trainer_gan, self).__init__()
         self.config = config
         self.input_nc = config['input_nc']
@@ -37,7 +38,7 @@ class trainer_gan(nn.Module):
             # self.netG = unet
             pass
         elif config['netG'] == 'resnet':
-            self.netG = ResnetGenerator(config['input_nc'], config['output_nc'], config['ngf'], use_dropout=False, n_blocks=9)
+            self.netG = ResnetGenerator(config['input_nc'], config['output_nc'], config['ngf'], use_dropout=True, n_blocks=9)
         elif config['netG'] == 'dilated':
             # self.netG = dilatedGenerator
             pass
@@ -73,12 +74,12 @@ class trainer_gan(nn.Module):
 
         # loss information
         self.loss_names = ['loss_d', 'loss_g', 'errL1', 'loss_dr', 'loss_gr', 'errL1_r']
-        self.train_loader = train_loader
+        self.data_loader = data_loader
 
         print(self.netG, self.netD, self.netD_r)
 
     def train(self, epoch):
-        for i, image in enumerate(self.train_loader):
+        for i, image in enumerate(self.data_loader):
             if self.config['AtoB'] == 'AtoB':
                 imgA = image[0]
                 imgB = image[1]
@@ -97,17 +98,13 @@ class trainer_gan(nn.Module):
             # print the logging information
             if i % 10 == 0:
                 losses = self.get_current_losses()
-                message = '([%d/%d][%d/%d])' % (epoch, self.config['nepoch'], i, len(self.train_loader))
+                message = '([%d/%d][%d/%d])' % (epoch, self.config['nepoch'], i, len(self.data_loader))
                 for k, v in losses.items():
                     message += '%s: %.3f ' % (k, v)
                 print(message)
 
             # visualization
             if i % 20 == 0:
-                vutils.save_image(imgA, '%s/imgA_epoch_%03d.png' % (self.config['outf'], epoch),
-                                  normalize=True)
-                vutils.save_image(imgB, '%s/imgB_epoch_%03d.png' % (self.config['outf'], epoch),
-                                  normalize=True)
                 vutils.save_image(real_A.data, '%s/realA_epoch_%03d.png' % (self.config['outf'], epoch),
                                   normalize=True)
                 vutils.save_image(real_B.data, '%s/realB_epoch_%03d.png' % (self.config['outf'], epoch),
@@ -198,6 +195,33 @@ class trainer_gan(nn.Module):
                 errors_ret[name] = getattr(self, name)
         return errors_ret
 
+    def save(self, epoch):
+        torch.save(self.netG.state_dict(), '%s/netG_epoch_%03d.pth' % (self.config['outf'], epoch))
+        torch.save(self.netD.state_dict(), '%s/netD_epoch_%03d.pth' % (self.config['outf'], epoch))
+        torch.save(self.netD_r.state_dict(), '%s/netD_r_epoch_%03d.pth' % (self.config['outf'], epoch))
+
+    def test(self):
+        self.netG.eval()
+        save_path = os.path.join(self.config['outf'], 'test')
+        if not os.path.exists(save_path):
+            os.mkdir(save_path)
+        for i, image in enumerate(self.data_loader):
+            if self.config['AtoB'] == 'AtoB':
+                imgA = image[0]
+                imgB = image[1]
+            else:
+                imgA = image[1]
+                imgB = image[0]
+
+            real_A, real_B = Variable(imgA.cuda()), Variable(imgB.cuda())
+            fake_B = self.netG(real_A)
+
+            vutils.save_image(real_A.data, '%s/realA_%03d.png' % (save_path, i),
+                              normalize=True)
+            vutils.save_image(real_B.data, '%s/realB_%03d.png' % (save_path, i),
+                              normalize=True)
+            vutils.save_image(fake_B.data, '%s/fakeB_%03d.png' % (save_path, i),
+                              normalize=True)
 
 class trainer_stackgan():
     def __init__(self):

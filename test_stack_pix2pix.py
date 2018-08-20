@@ -9,7 +9,7 @@ import random
 import sys
 
 from src.trainer_Stack_pix2pix import GAN_Trainer
-from data.dataset import DatasetFromFolder
+from data.dataset import Aligned_Dataset
 from utils.tools import get_config
 
 parser = OptionParser()
@@ -38,7 +38,7 @@ def main(argv):
     transform = transforms.Compose([transforms.Resize((512, 512)),
                                     transforms.ToTensor(),
                                     transforms.Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))])
-    dataset = DatasetFromFolder(config['datapath'], subfolder='test', direction='AtoB', transform=transform)
+    dataset = Aligned_Dataset(config['datapath'], subfolder='test', direction='AtoB', transform=transform)
     dataloader = torch.utils.data.DataLoader(dataset, batch_size=1,
                                              shuffle=False, num_workers=int(2))
     model_dir = '/media/scw4750/AIwalker/stackgan-like/checkpoints/generator_epoch_160.pkl'

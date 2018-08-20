@@ -59,7 +59,7 @@ class Proposal(nn.Module):
         mask = Variable(torch.zeros(real_AB.size(0), 6, real_AB.size(2), real_AB.size(3)).cuda())
         for i in range(real_AB.size(0)):
             x, y = ax[i, :].astype(int)
-            mask[i, :, x:x + self.stride, y:y + self.stride] = 1.
+            mask[i, :, x:x + int(self.receptive_field), y:y + int(self.receptive_field)] = 1.
         fake_ABm = fake_AB * mask + real_AB * (1 - mask)
         return fake_ABm
 
