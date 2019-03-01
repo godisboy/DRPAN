@@ -1,4 +1,4 @@
-# DRPAN: Discriminative Region Proposal Adversarial　Network for High-Quality Image-to-Image Translation
+# DRPAN: Discriminative Region Proposal Adversarial Network for High-Quality Image-to-Image Translation
 
 This is our implementation of DRPAN.
 
