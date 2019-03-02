@@ -38,3 +38,5 @@ python test.py --dataroot ./datasets/cityscapes --name cityscapes_cycle_drpan --
 ```
 The test results will be saved to `./results/cityscapes_cycle_drpan`.
 
+## Acknowledgments
+This code borrows heavily from [pytorch-CycleGAN-and-pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix).
