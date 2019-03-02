@@ -17,8 +17,8 @@ pip install -r requirements.txt
 ```
 - Clone this repo:
 ```bash
-git clone https://github.com/godisboy/DRPAN/CycleGAN_DRPAN.git
-cd CycleGAN_DRPAN
+git clone https://github.com/godisboy/DRPAN.git
+cd DRPAN/CycleGAN_DRPAN
 ```
 ### CycleGAN+DRPAN train/test
 
