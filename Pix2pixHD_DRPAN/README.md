@@ -18,7 +18,7 @@ pip install dominate
 - Clone this repo:
 ```bash
 git clone https://github.com/godisboy/DRPAN.git
-cd DRPAN/Pix2pix_DRPAN
+cd DRPAN/Pix2pixHD_DRPAN
 ```
 - Prepare your paired image2image translation dataset.
 
