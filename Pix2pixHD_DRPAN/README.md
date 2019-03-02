@@ -31,12 +31,10 @@ We use the Cityscapes dataset. To train a model on the full dataset, please down
 - Train a model:
 ```
 python main.py --config configs/cityscapes.yaml --cuda --gpu_ids 0
-
 ```
 The train results and trained model will be saved to `checkpoints`, you can set the `outf` in config file.
 - Test a model:
 ```
 python test.py --config configs/cityscapes.yaml --checkpoints/generator_epoch_200.pkl--cuda --gpu_ids 0
-
 ```
 If you want to test with the trained model of other epochs, please modify `--checkpoints/generator_epoch_other.pkl`. 
