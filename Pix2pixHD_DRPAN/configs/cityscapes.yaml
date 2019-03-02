@@ -1,0 +1,36 @@
+name: cityscapes            # the name of the training data sets
+dataPath: /media/scw4750/nwj/Pix2pixHD_DRPAN/cityscape
+loadSizeH: 572            # loading size of image
+loadSizeW: 1144
+fineSizeH: 512            # fineSize
+fineSizeW: 1024
+flip: 1
+
+cuda: true
+AtoB: AtoB               # which direction: AtoB is semantic map to real
+outf: /media/scw4750/nwj/Pix2pixHD_DRPAN/checkpoints    # where to collect the log
+batchSize: 1
+input_nc: 35
+output_nc: 3
+box_width: 64            # box width
+nepoch: 200
+lr: 0.0002
+beta1: 0.5
+n_step: 1
+#region_width: 64
+
+# network setting
+gan_type: CGAN
+netG: local
+ngf: 64
+netD: multiscale
+ndf: 64
+reviser: patchd
+
+# proposal
+mask_operation: true
+window_width: 9
+window_height: 9
+region_width: 140
+region_height: 140
+receptive_field: 140
