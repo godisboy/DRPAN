@@ -14,7 +14,7 @@ This is our implementation of DRPAN.
 - Clone this repo:
 ```bash
 git clone https://github.com/godisboy/DRPAN.git
-cd DRPAN
+cd DRPAN/DRPAN
 ```
 - Prepare your paired image2image translation dataset:
 
