@@ -1,6 +1,6 @@
-# Pix2pix+DRPAN in PyTorch
+# Pix2pixHD+DRPAN in PyTorch
 
-This is our PyTorch implementation of Pix2pix+DRPAN on image-to-image translation.
+This is our PyTorch implementation of Pix2pixHD+DRPAN on image-to-image translation.
 
 ## Prerequisites
 - Linux or OSX.
@@ -20,12 +20,14 @@ pip install dominate
 git clone https://github.com/godisboy/DRPAN.git
 cd DRPAN/Pix2pixHD_DRPAN
 ```
-- Prepare your paired image2image translation dataset.
 
 - Modify the config file:
 change the `dataPath` to your data set path.
 
 ### Pix2pix+DRPAN train/test
+- Prepare your paired image2image translation dataset. 
+
+We use the Cityscapes dataset. To train a model on the full dataset, please download it from the [official website](https://www.cityscapes-dataset.com/) (registration required).
 - Train a model:
 ```
 python main.py --config configs/cityscapes.yaml --cuda --gpu_ids 0
