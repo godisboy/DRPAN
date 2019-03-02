@@ -24,7 +24,7 @@ cd DRPAN/Pix2pixHD_DRPAN
 - Modify the config file:
 change the `dataPath` to your data set path.
 
-### Pix2pix+DRPAN train/test
+### Pix2pixHD+DRPAN train/test
 - Prepare your paired image2image translation dataset. 
 
 We use the Cityscapes dataset. To train a model on the full dataset, please download it from the [official website](https://www.cityscapes-dataset.com/) (registration required).
