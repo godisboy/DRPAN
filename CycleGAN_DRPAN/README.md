@@ -1,6 +1,6 @@
 # CycleGAN+DRPAN in PyTorch
 
-This is our PyTorch implementation of CycleGAN+DRPAN on unpaired image-to-image translation.
+This is the PyTorch implementation of our CycleGAN+DRPAN on unpaired image-to-image translation.
 
 ## Prerequisites
 - Linux or macOS
@@ -11,10 +11,11 @@ This is our PyTorch implementation of CycleGAN+DRPAN on unpaired image-to-image 
 
 ### Installation
 
-- Install PyTorch 0.4+ and torchvision from http://pytorch.org and other dependencies (e.g., [visdom](https://github.com/facebookresearch/visdom) and [dominate](https://github.com/Knio/dominate)). You can install all the dependencies by
+- Install PyTorch 0.4+ and torchvision from http://pytorch.org and other dependencies (e.g., [visdom](https://github.com/facebookresearch/visdom) and [dominate](https://github.com/Knio/dominate)). You can install all the dependencies by:
 ```bash
 pip install -r requirements.txt
 ```
+
 - Clone this repo:
 ```bash
 git clone https://github.com/godisboy/DRPAN.git
@@ -26,7 +27,8 @@ cd DRPAN/CycleGAN_DRPAN
 ```bash
 bash ./datasets/download_cyclegan_dataset.sh cityscapes
 ```
-- Train a model:
+
+- Train the model:
 ```bash
 python train.py --dataroot ./datasets/cityscapes --name cityscapes_cycle_drpan --gpu_ids 0
 ```
