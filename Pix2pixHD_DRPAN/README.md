@@ -1,6 +1,6 @@
 # Pix2pixHD+DRPAN in PyTorch
 
-This is our PyTorch implementation of Pix2pixHD+DRPAN on image-to-image translation.
+This is the PyTorch implementation of our Pix2pixHD+DRPAN on image-to-image translation.
 
 ## Prerequisites
 - Linux or OSX.
@@ -10,7 +10,7 @@ This is our PyTorch implementation of Pix2pixHD+DRPAN on image-to-image translat
 ## Getting Started
 ### Installation
 - Install PyTorch and dependencies from http://pytorch.org/.
-- Install python libraries [dominate](https://github.com/Knio/dominate).
+- Install python libraries [dominate](https://github.com/Knio/dominate):
 ```bash
 pip install dominate
 ```
@@ -28,13 +28,13 @@ change the `dataPath` to your data set path.
 - Prepare your paired image2image translation dataset. 
 
 We use the Cityscapes dataset. To train a model on the full dataset, please download it from the [official website](https://www.cityscapes-dataset.com/) (registration required).
-- Train a model:
+- Train the model:
 ```
 python main.py --config configs/cityscapes.yaml --cuda --gpu_ids 0
 ```
-The train results and trained model will be saved to `checkpoints`, you can set the `outf` in config file.
-- Test a model:
+The train results and trained model will be saved to `checkpoints`, you can set the `outf` in config file to change it.
+- Test the model:
 ```
-python test.py --config configs/cityscapes.yaml --checkpoints/generator_epoch_200.pkl--cuda --gpu_ids 0
+python test.py --config configs/cityscapes.yaml --checkpoints/generator_epoch_200.pkl --cuda --gpu_ids 0
 ```
 If you want to test with the trained model of other epochs, please modify `--checkpoints/generator_epoch_other.pkl`. 
