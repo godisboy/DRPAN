@@ -1,6 +1,6 @@
-# DRPAN: Discriminative Region Proposal Adversarial Network for High-Quality Image-to-Image Translation
+# DRPAN: Discriminative Region Proposal Adversarial Networks for High-Quality Image-to-Image Translation
 
-This is our implementation of DRPAN.
+This is the implementation of our DRPAN.
 
 ## Prerequisites
 - Linux or OSX.
@@ -9,17 +9,17 @@ This is our implementation of DRPAN.
 
 ## Getting Started
 ### Installation
-- Install PyTorch and dependencies from http://pytorch.org/
+- Install PyTorch and the dependencies from http://pytorch.org/.
 
 - Clone this repo:
 ```bash
 git clone https://github.com/godisboy/DRPAN.git
 cd DRPAN/DRPAN
 ```
-- Prepare your paired image2image translation dataset:
+- Prepare your paired image2image translation dataset;
 
 - Modify the config file:
-change the `dataPath` to your data set path
+change the `dataPath` to your data set path.
 
 ### DRPAN train
 - Train a model:
