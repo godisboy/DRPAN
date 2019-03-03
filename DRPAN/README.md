@@ -27,7 +27,7 @@ change the `dataPath` to your data set path.
 python main.py --config configs/facades.yaml --cuda --gpu_ids 0
 
 ```
-### StackGan-like model train
+### StackGAN-like model train
 ```
 python train_stack_pix2pix.py --config configs/facades.yaml --cuda --gpu_ids 0
 
