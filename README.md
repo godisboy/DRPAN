@@ -4,9 +4,9 @@
 
 The dictionary `DRPAN` is the preliminary version of the work which has been published in ECCV 2018.
 
-The dictionary `CycleGAN_DRPAN` is our extended work of improving CycleGAN by DRPAN (CycleGAN+DRPAN).
-
 The dictionary `Pix2pixHD_DRPAN` is our extended work of combining pix2pixHD with DRPAN (Pix2pixHD+DRPAN).
+
+The dictionary `CycleGAN_DRPAN` is our extended work of improving CycleGAN by DRPAN (CycleGAN+DRPAN).
 
 ## Citation
 ```
