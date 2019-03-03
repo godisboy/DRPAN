@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The directory `DRPAN` is the preliminary version of the work which has been published in ECCV 2018.
+The directory `DRPAN` is the preliminary version of our DRPAN work which has been published in ECCV 2018.
 
 The directory `Pix2pixHD_DRPAN` is our extended work of combining pix2pixHD with DRPAN (Pix2pixHD+DRPAN).
 
