@@ -10,7 +10,7 @@ The directory `CycleGAN_DRPAN` is our extended work of improving CycleGAN by DRP
 
 ## Citation
 ```
-@article{wang2018drpan,
+@article{wang2019drpan,
   title={Discriminative region proposal adversarial network for high-quality image-to-image translation},
   author={Wang, Chao and Niu, Wenjie and Jiang, Yufeng and Zheng, Haiyong and Yu, Zhibin and Gu, Zhaorui and Zheng, Bing},
   journal={submitted},
