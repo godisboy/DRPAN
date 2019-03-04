@@ -10,7 +10,7 @@ This is the PyTorch implementation of our Pix2pixHD+DRPAN on image-to-image tran
 ## Getting Started
 ### Installation
 - Install PyTorch and dependencies from http://pytorch.org/.
-- Install python libraries [dominate](https://github.com/Knio/dominate):
+- Install python library [dominate](https://github.com/Knio/dominate):
 ```bash
 pip install dominate
 ```
