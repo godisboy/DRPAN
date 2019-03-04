@@ -3,7 +3,7 @@
 This is the implementation of our DRPAN.
 
 ## Prerequisites
-- Linux or OSX.
+- Linux or macOS.
 - Python 2 or Python 3.
 - CPU or NVIDIA GPU + CUDA CuDNN.
 
