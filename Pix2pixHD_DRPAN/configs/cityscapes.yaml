@@ -1,5 +1,5 @@
 name: cityscapes            # the name of the training data sets
-dataPath: /media/scw4750/nwj/Pix2pixHD_DRPAN/cityscape
+dataPath: ../cityscape
 loadSizeH: 572            # loading size of image
 loadSizeW: 1144
 fineSizeH: 512            # fineSize
@@ -8,7 +8,7 @@ flip: 1
 
 cuda: true
 AtoB: AtoB               # which direction: AtoB is semantic map to real
-outf: /media/scw4750/nwj/Pix2pixHD_DRPAN/checkpoints    # where to collect the log
+outf: ../checkpoints    # where to collect the log
 batchSize: 1
 input_nc: 35
 output_nc: 3

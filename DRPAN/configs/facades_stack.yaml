@@ -1,13 +1,13 @@
 # data information
 
 name: facades
-datapath: /media/scw4750/AIwalker/dataset/cityscape/     # path to dataset
+datapath:  ../cityscape/     # path to dataset
 
 # training information
 niter: 200
 cuda: true
-outf: /media/scw4750/AIwalker/stackgan-like/checkpoints/
-outf_test: checkpoints/test/
+outf: ../checkpoints/
+outf_test: ../checkpoints/test/
 
 # GAN parameters
 branch: 3                 # stacked architecture: 64--->128--->256[3]

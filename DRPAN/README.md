@@ -25,12 +25,15 @@ change the `dataPath` to your data set path.
 - Train a model:
 ```
 python main.py --config configs/facades.yaml --cuda --gpu_ids 0
-
 ```
+- Test a model:
+```
+python test.py --config configs/facades.yaml --checkpoints/generator_epoch_200.pkl --cuda --gpu_ids 0
+```
+If you want to test with the trained model of other epochs, please modify `--checkpoints/generator_epoch_other.pkl`. 
 ### StackGAN-like model train
 ```
 python train_stack_pix2pix.py --config configs/facades.yaml --cuda --gpu_ids 0
-
 ```
 ## Paper
 
