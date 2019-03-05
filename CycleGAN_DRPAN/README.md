@@ -30,13 +30,13 @@ bash ./datasets/download_cyclegan_dataset.sh cityscapes
 
 - Train the model:
 ```bash
-python train.py --dataroot ./datasets/cityscapes --name cityscapes_cycle_drpan --gpu_ids 0
+python train.py --dataroot ./datasets/cityscapes --name cityscapes_cycle_drpan --model cycle_drpan --gpu_ids 0
 ```
 The train results will be saved to `./checkpoints/cityscapes_cycle_drpan`.
 
 - Test the model:
 ```bash
-python test.py --dataroot ./datasets/cityscapes --name cityscapes_cycle_drpan --gpu_ids 0
+python test.py --dataroot ./datasets/cityscapes --name cityscapes_cycle_drpan --model cycle_drpan --gpu_ids 0
 ```
 The test results will be saved to `./results/cityscapes_cycle_drpan`.
 
