@@ -37,4 +37,4 @@ The train results and trained model will be saved to `checkpoints`, you can set 
 ```
 python test.py --config configs/cityscapes.yaml --modeldir checkpoints/generator_epoch_199.pkl --cuda --gpu_ids 0
 ```
-If you want to test with the trained model of other epochs, please modify `--checkpoints/generator_epoch_other.pkl`. 
+If you want to test with the trained model of other epochs, please modify `--modeldir checkpoints/generator_epoch_other.pkl`. 
