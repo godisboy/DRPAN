@@ -3,9 +3,9 @@
 This is the PyTorch implementation of our CycleGAN+DRPAN on unpaired image-to-image translation.
 
 ## Prerequisites
-- Linux or macOS
-- Python 2 or 3
-- CPU or NVIDIA GPU + CUDA CuDNN
+- Linux or macOS.
+- Python 2 or 3.
+- CPU or NVIDIA GPU + CUDA CuDNN.
 
 ## Getting Started
 

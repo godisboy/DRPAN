@@ -3,7 +3,7 @@
 This is the implementation of our DRPAN.
 
 ## Prerequisites
-- Linux or OSX.
+- Linux or macOS.
 - Python 2 or Python 3.
 - CPU or NVIDIA GPU + CUDA CuDNN.
 
@@ -22,21 +22,22 @@ cd DRPAN/DRPAN
 change the `dataPath` to your data set path.
 
 ### DRPAN train
-- Train a model:
+- Train the model:
 ```
 python main.py --config configs/facades.yaml --cuda --gpu_ids 0
 ```
-- Test a model:
+- Test the model:
 ```
 python test.py --config configs/facades.yaml --modeldir checkpoints/generator_epoch_199.pkl --cuda --gpu_ids 0
 ```
 If you want to test with the trained model of other epochs, please modify `--checkpoints/generator_epoch_other.pkl`. 
+
 ### StackGAN-like model train
 ```
 python train_stack_pix2pix.py --config configs/facades.yaml --cuda --gpu_ids 0
 ```
-## Paper
 
+## Paper
 Chao Wang, Haiyong Zheng, Zhibin Yu, Ziqiang Zheng, Zhaorui Gu, Bing Zheng. "Discriminative Region Proposal Adversarial Networks for High-Quality Image-to-Image Translation", ECCV 2018. [[CVF](http://openaccess.thecvf.com/content_ECCV_2018/papers/Chao_Wang_Discriminative_Region_Proposal_ECCV_2018_paper.pdf)] [[arXiv](https://arxiv.org/abs/1711.09554)]
 
 ## Acknowledgments

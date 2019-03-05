@@ -3,7 +3,7 @@
 This is the PyTorch implementation of our Pix2pixHD+DRPAN on image-to-image translation.
 
 ## Prerequisites
-- Linux or OSX.
+- Linux or macOS.
 - Python 2 or Python 3.
 - CPU or NVIDIA GPU + CUDA CuDNN.
 
