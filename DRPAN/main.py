@@ -15,7 +15,7 @@ parser.add_option('--config', type=str, help='net configuration')
 parser.add_option('--cuda', action='store_true', help='enables_cuda')
 parser.add_option('--gpu_ids', default=0, type=int, help='enables cuda')
 parser.add_option('--manualSeed', type=int, help='manual seed')
-
+parser.add_option('--resume_epoch', type=int, default=0, help='resume model')
 
 def main(argv):
     (opt, args) = parser.parse_args(argv)
@@ -40,13 +40,15 @@ def main(argv):
     train_loader = torch.utils.data.DataLoader(dataset, batch_size=1,
                                              shuffle=True, num_workers=int(4))
     # setup model
-    trainer = trainer_gan(config, train_loader)
+    trainer = trainer_gan(config, train_loader, resume_epoch=opt.resume_epoch)
     if opt.cuda:
         trainer.cuda()
+    if opt.resume_epoch:
+        trainer.resume()
     # training
-    for epoch in range(config['nepoch']):
+    for epoch in range(opt.resume_epoch, config['nepoch']):
         trainer.train(epoch)
-        if epoch % 20 == 0:
+        if epoch % 10 == 0:
             trainer.save(epoch)
 
 

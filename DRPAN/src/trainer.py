@@ -22,7 +22,7 @@ def to_varabile(arr, requires_grad=False, is_cuda=True):
 
 
 class trainer_gan(nn.Module):
-    def __init__(self, config, data_loader):
+    def __init__(self, config, data_loader, resume_epoch):
         super(trainer_gan, self).__init__()
         self.config = config
         self.input_nc = config['input_nc']
@@ -33,6 +33,7 @@ class trainer_gan(nn.Module):
         self.label_r = torch.FloatTensor(self.batchSize)
         self.real_label = 1.
         self.fake_label = 0.
+        self.resume_epoch = resume_epoch
         # using which netG
         if config['netG'] == 'unet':
             # self.netG = unet
@@ -118,6 +119,12 @@ class trainer_gan(nn.Module):
                 vutils.save_image(real_Br.data, '%s/realB_local_epoch_%03d.png' % (self.config['outf'], epoch),
                                   normalize=True)
 
+        # save the generator
+        if epoch % 10 == 0:
+            torch.save(self.netG.state_dict(), '%s/generator_epoch_%d.pkl' % (self.config['outf'], epoch))
+        if epoch % 199 == 0:
+            torch.save(self.netG.state_dict(), '%s/generator_epoch_%d.pkl' % (self.config['outf'], epoch))
+
     def update_cgan(self, real_A, real_B):
 
         real_AB = torch.cat((real_A, real_B), 1)
@@ -199,6 +206,11 @@ class trainer_gan(nn.Module):
         torch.save(self.netG.state_dict(), '%s/netG_epoch_%03d.pth' % (self.config['outf'], epoch))
         torch.save(self.netD.state_dict(), '%s/netD_epoch_%03d.pth' % (self.config['outf'], epoch))
         torch.save(self.netD_r.state_dict(), '%s/netD_r_epoch_%03d.pth' % (self.config['outf'], epoch))
+
+    def resume(self):
+        self.netG.load_state_dict(torch.load('%s/netG_epoch_%03d.pth' % (self.config['outf'], self.resume_epoch)))
+        self.netD.load_state_dict(torch.load('%s/netD_epoch_%03d.pth' % (self.config['outf'], self.resume_epoch)))
+        self.netD_r.load_state_dict(torch.load('%s/netD_r_epoch_%03d.pth' % (self.config['outf'], self.resume_epoch)))
 
     def test(self):
         self.netG.eval()

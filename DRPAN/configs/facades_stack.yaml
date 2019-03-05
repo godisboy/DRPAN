@@ -1,13 +1,14 @@
 # data information
 
-name: facades
-datapath:  ../cityscape/     # path to dataset
+name: datasets
+datapath:  ./datasets/     # path to dataset
+
 
 # training information
 niter: 200
 cuda: true
-outf: ../checkpoints/
-outf_test: ../checkpoints/test/
+outf: ./checkpoints/
+outf_test: ./checkpoints/test/
 
 # GAN parameters
 branch: 3                 # stacked architecture: 64--->128--->256[3]

@@ -16,7 +16,7 @@ parser.add_option('--cuda', action='store_true', help='enables_cuda')
 parser.add_option('--gpu_ids', default=0, type=int, help='enables cuda')
 parser.add_option('--manualSeed', type=int, help='manual seed')
 parser.add_option('--modeldir', type=str, help='path to models')
-
+parser.add_option('--resume_epoch', type=int, default=0, help='resume model')
 
 def main(argv):
     (opt, args) = parser.parse_args(argv)
@@ -39,9 +39,9 @@ def main(argv):
                                     transforms.Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))])
     dataset = Aligned_Dataset(config['dataPath'], subfolder='test', direction='AtoB', transform=transform)
     test_loader = torch.utils.data.DataLoader(dataset, batch_size=1,
-                                             shuffle=True, num_workers=int(4))
+                                             shuffle=False, num_workers=int(4))
     # setup model
-    trainer = trainer_gan(config, test_loader)
+    trainer = trainer_gan(config, test_loader, resume_epoch=opt.resume_epoch)
     # load a model
     trainer.netG.load_state_dict(torch.load(opt.modeldir))
     if opt.cuda:

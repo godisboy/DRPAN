@@ -1,12 +1,12 @@
-name: facades            # the name of the training data sets
-dataPath: ../facades
+name: datasets            # the name of the training data sets
+dataPath: ./datasets
 loadSize: 286            # loading size of image
 fineSize: 256            # fineSize
 flip: 1
 
 cuda: true
 AtoB: BtoA               # which direction: AtoB is semantic map to real
-outf: ../checkpoints         # where to collect the log
+outf: ./checkpoints         # where to collect the log
 batchSize: 1
 input_nc: 3
 output_nc: 3
@@ -31,3 +31,4 @@ window_width: 1
 window_height: 1
 region_width: 70
 region_height: 70
+
