@@ -30,11 +30,7 @@ python main.py --config configs/facades.yaml --cuda --gpu_ids 0
 ```
 python test.py --config configs/facades.yaml --modeldir checkpoints/generator_epoch_199.pkl --cuda --gpu_ids 0
 ```
-<<<<<<< HEAD
-If you want to test with the trained model of other epochs, please modify `--checkpoints/generator_epoch_other.pkl`. 
-=======
 If you want to test with the trained model of other epochs, please modify `--modeldir checkpoints/generator_epoch_other.pkl`. 
->>>>>>> e0dbd986b04f412cf74414630428f1907038a639
 
 ### StackGAN-like model train
 ```
