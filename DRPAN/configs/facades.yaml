@@ -15,7 +15,6 @@ nepoch: 200
 lr: 0.0002
 beta1: 0.5
 n_step: 1
-region_width: 64
 
 # network setting
 gan_type: CGAN
